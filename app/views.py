@@ -33,8 +33,8 @@ def notescreate(request):
 		content=request.POST.get('content')
 		notes_data = Notes(title=title, content=content)
 		notes_data.save()
-		msg = 'Notes saved!! 🗸'
-	return render(request, 'dashboard.html', {'msg':msg})
+		# msg = 'Notes saved!! 🗸'
+	return render(request, 'dashboard.html')
 
 
 
