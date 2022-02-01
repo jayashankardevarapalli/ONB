@@ -9,7 +9,7 @@ def index(request):
 
 def dashboard(request):
 	note = Notes.objects.all()[:11]
-	todo = Todo.objects.all()
+	todo = Todo.objects.all()[:2]
 	data = {
 			'note': note,
 			'todo': todo
@@ -17,10 +17,12 @@ def dashboard(request):
 	return render(request, 'dashboard.html', data)
 
 def notes(request):
-	return render(request, 'notes.html')
+	note = Notes.objects.all()[:11]
+	return render(request, 'notes.html', {'note': note,})
 
 def todo(request):
-	return render(request, 'todo.html')
+	todo = Todo.objects.all()[:11]
+	return render(request, 'todo.html', {'todo': todo,})
 
 def about(request):
 	return render(request, 'about.html')

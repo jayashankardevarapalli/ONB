@@ -4,20 +4,11 @@
 
 {% block content %}
 
-
-<div class="container">
-    <div class="row">
-    	{% for n in note %}
-    	<div class="col s12 m8">
-        <div class="col-md-4">
-        	<br>
-            <h2>{{n.title | safe}}</h2>
-            <p style="font-size: 14px">{{n.updated_at}}</p>
-            <p>{{ n.content | safe }}</p>
-        </div>
-    </div>
+<div class="cutom-container">
+    {% for t in todo %}
+    {{t.title}}
+    {{t.content}}
     {% endfor %}
-    </div>
 </div>
 
 {% endblock %}
