@@ -9,7 +9,7 @@ def index(request):
 
 def dashboard(request):
 	note = Notes.objects.all()[:11]
-	todo = Todo.objects.all()[:2]
+	todo = Todo.objects.all()[:4]
 	data = {
 			'note': note,
 			'todo': todo
@@ -27,8 +27,14 @@ def todo(request):
 def about(request):
 	return render(request, 'about.html')
 
-def create(request):
-	return render(request, 'create.html')
+def notescreate(request):
+	if request.method == "POST":
+		title=request.POST.get('title')
+		content=request.POST.get('content')
+		notes_data = Notes(title=title, content=content)
+		notes_data.save()
+		msg = 'Notes saved!! 🗸'
+	return render(request, 'dashboard.html', {'msg':msg})
 
 
 

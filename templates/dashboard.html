@@ -4,11 +4,26 @@
 
 {% block content %}
 
-<div class="cutom-container">
-    {% for t in todo %}
-    {{t.title}}
-    {{t.content}}
-    {% endfor %}
+<div class="alert" style="padding: 20px 40px; min-width: 420px; position: absolute; right: 0px; top:80px; border-radius: 4px; border-left: 8px solid #00BFFF; background: #ADD8E6; font-size: 18px;">
+    <span class="fas fa-exclamation-circle"></span>
+    <span class="msg">{{msg}}</span>
+</div>
+<div class="container">
+    <form method="post" action="/notescreate/" role="create" id="cn">
+        {% csrf_token %}
+        <div class="col">
+            <label for="title">Title</label>
+            <input type="text" style="width: 500px;" class="form-control" id="nt" name="title" placeholder="Title">
+        </div>
+        <div class="cols">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="nc" name="content" rows="5"></textarea>
+        </div>
+        <br>
+        <div>
+            <input type="submit" name="save" class="btn btn-primary">
+        </div>
+    </form>
 </div>
 
 {% endblock %}
