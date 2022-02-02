@@ -45,3 +45,9 @@ def dashboard(request):
 			'notes': notes
 	}
 	return render(request, 'dashboard.html', data)
+
+def delnotes(request, noteid):
+	notes = Notes.objects.get(pk=noteid)
+	notes.delete()
+
+	return redirect('/dashboard/?noteid=0')

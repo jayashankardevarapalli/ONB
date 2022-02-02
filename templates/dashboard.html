@@ -12,13 +12,14 @@
             <div class="col-2">
                 <aside class="menu">
                     <p class="menu-label"><h1>Notes</h1></p>
-                    <p><a class="btn btn-primary" href="{% url 'dashboard' %}?noteid=0" role="button">New Notes &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="{% url 'dashboard' %}?noteid=0" role="button">New Notes &raquo;</a>
+                    </p>
                     <br>
                     <ul class="menu-list">
                         {% for n in note %}
-                            <li>
-                                <a href="{% url 'dashboard' %}?noteid={{n.id}}">{{n.title}}</a>
-                            </li>
+                        <li>
+                            <a href="{% url 'dashboard' %}?noteid={{n.id}}">{{n.title}}</a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </aside>
@@ -43,12 +44,17 @@
                     <div class="form-group">
                         <div class="control">
                             <button class="btn btn-primary">Save Notes</button>
+                            {% if notes %}
+                            <a href="{% url 'delnotes' notes.id %}" class="btn btn-danger">Delete Notes</a>
+                            {% endif %}
                         </div>
+                        <br>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
 
 {% endblock %}
