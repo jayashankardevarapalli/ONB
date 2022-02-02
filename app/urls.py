@@ -1,12 +1,8 @@
 from django.urls import path,include
-from .views import index,dashboard,notes,todo,about,notescreate
-
+from .views import index,dashboard,about
 
 urlpatterns = [
-	path('', index),
-	path('dashboard/', dashboard),
-	path('notes/', notes),
-	path('todo/', todo),
-	path('notescreate/', notescreate),
-	path('about/', about)
+	path('', index, name='index'),
+	path('dashboard/', dashboard, name='dashboard'),
+	path('about/', about, name='about')
 ]
