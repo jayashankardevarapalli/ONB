@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Notes,Todo
+from .models import Notes
 
 
 
@@ -13,8 +13,6 @@ def about(request):
 def dashboard(request):
 	noteid = int(request.GET.get('noteid', 0))
 	note = Notes.objects.all()
-	todoid = int(request.GET.get('todoid', 0))
-	todo = Todo.objects.all()
 	
 
 	if request.method == 'POST':
@@ -40,35 +38,12 @@ def dashboard(request):
 	else:
 		notes = ''
 
-	if request.method == 'POST':
-		todoid = int(request.POST.get('todoid',0))
-		title = request.POST.get('todo-title')
-
-		if todoid > 0:
-			todos = Todo.objects.get(pk=todoid)
-			todos.title = title
-			todos.save()
-
-			return redirect('/dashboard/?todoid=%i' % todoid)
-		else:
-			todos = Todo.objects.create(title=title)
-
-			return redirect('/dashboard/?todoid=%i' %todos.id)
-
-	if todoid > 0:
-		todos = Todo.objects.get(pk=todoid)
-	else:
-		todos = ''
-
 
 
 	data = {
 			'noteid': noteid,
 			'note': note,
-			'notes': notes,
-			'todoid': todoid,
-			'todo': todo,
-			'todos': todos
+			'notes': notes
 	}
 
 	return render(request, 'dashboard.html', data)
@@ -80,10 +55,5 @@ def delnotes(request, noteid):
 	return redirect('/dashboard/?noteid=0')
 
 
-def deltodo(request, todoid):
-	todos = Todo.objects.get(pk=todoid)
-	todos.delete()
-
-	return redirect('/dashboard/?todoid=0')
 
 

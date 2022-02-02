@@ -12,13 +12,13 @@
             <div class="col-2">
                 <aside class="menu">
                     <p class="menu-label"><h1>Notes</h1></p>
-                    <p><a class="btn btn-primary" href="{% url 'dashboard' %}?noteid=0" role="button">New Notes &raquo;</a>
+                    <p><a class="btn btn-primary" href="{% url 'dashboard' %}?noteid=0" style="font-size: 20px" role="button">New Notes &raquo;</a>
                     </p>
                     <br>
                     <ul class="menu-list">
                         {% for n in note %}
                         <li>
-                            <a href="{% url 'dashboard' %}?noteid={{n.id}}">{{n.title}}</a>
+                            <a href="{% url 'dashboard' %}?noteid={{n.id}}" style="font-size: 20px" >{{n.title}}</a>
                         </li>
                         {% endfor %}
                     </ul>
