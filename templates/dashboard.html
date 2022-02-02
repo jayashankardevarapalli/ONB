@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %} Index {% endblock %}
+{% block title %} Dashboard {% endblock %}
 
 {% block content %}
 
 
 <section class="section">
     <br>
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-2">
                 <aside class="menu">
-                    <p class="menu-label"><h1>Notes</h1></p>
+                    <p class="menu-label"><h1 class="fw-bold display 2">Notes</h1></p>
                     <p><a class="btn btn-primary" href="{% url 'dashboard' %}?noteid=0" style="font-size: 20px" role="button">New Notes &raquo;</a>
                     </p>
                     <br>
                     <ul class="menu-list">
                         {% for n in note %}
                         <li>
-                            <a href="{% url 'dashboard' %}?noteid={{n.id}}" style="font-size: 20px" >{{n.title}}</a>
+                            <a href="{% url 'dashboard' %}?noteid={{n.id}}" style="font-size: 23px;" >{{n.title}}</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -29,7 +30,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="noteid" value="{{noteid}}">
                     <div class="form-group">
-                        <label class="label"><h2>Title</h2>{% if notes %}<span class="has-text-grey-light">
+                        <label class="label"><h2 class="fw-bold display 2">Title</h2>{% if notes %}<span class="has-text-grey-light">
                             Last updated at:{{notes.updated_at | date:"d/m/Y"}} || created at: {{notes.created_at | date:"d/m/Y"}}{% endif %}
                         </span></label>
                         <div class="control">
@@ -38,7 +39,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label class="label"><h2>Notes</h2></label>
+                        <label class="label"><h2 class="fw-bold display 2">Notes</h2></label>
                         <div class="control">
                             <textarea type="text" class="form-control" name="content" style="width: 1200px; font-size:20px;" rows="10" placeholder="Enter the notes....">{% if notes %}{{ notes.content}}{% endif %}</textarea>
                         </div>
@@ -46,9 +47,9 @@
                     <br>
                     <div class="form-group">
                         <div class="control">
-                            <button class="btn btn-primary">Save Notes</button>
+                            <button class="btn btn-primary" style="font-size: 20px">Save Notes</button>
                             {% if notes %}
-                            <a href="{% url 'delnotes' notes.id %}" class="btn btn-danger">Delete Notes</a>
+                            <a href="{% url 'delnotes' notes.id %}" style="font-size: 20px" class="btn btn-danger">Delete Notes</a>
                             {% endif %}
                         </div>
                         <br>

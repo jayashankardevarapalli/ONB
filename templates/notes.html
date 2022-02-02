@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Notes {% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <div class="row">
+        {% for n in note %}
+        <div class="col-md-4">
+            <h2 class="fw-bold display 2">{{n.title | safe}}</h2>
+            <p style="font-size: 15px;">Last updated at: {{n.updated_at | date:"d/m/Y"}}</p>
+            <p style="font-size: 20px;">{{ n.content | safe }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

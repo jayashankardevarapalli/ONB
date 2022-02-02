@@ -54,6 +54,10 @@ def delnotes(request, noteid):
 
 	return redirect('/dashboard/?noteid=0')
 
+def notes(request):
+	note = Notes.objects.all()[:11]
+	return render(request, 'notes.html', {'note':note})
+
 
 
 
