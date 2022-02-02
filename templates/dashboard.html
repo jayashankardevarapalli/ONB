@@ -29,11 +29,14 @@
                     {% csrf_token %}
                     <input type="hidden" name="noteid" value="{{noteid}}">
                     <div class="form-group">
-                        <label class="label"><h2>Title</h2></label>
+                        <label class="label"><h2>Title</h2>{% if notes %}<span class="has-text-grey-light">
+                            Last updated at:{{notes.updated_at | date:"d/m/Y"}} || created at: {{notes.created_at | date:"d/m/Y"}}{% endif %}
+                        </span></label>
                         <div class="control">
                             <input type="text" class="form-control" rows="2" style="width: 1200px; font-size: 20px;" name="title" placeholder="Title"{% if notes %} value="{{ notes.title }}"{% endif %}>
                         </div>
                     </div>
+                    <br>
                     <div class="form-group">
                         <label class="label"><h2>Notes</h2></label>
                         <div class="control">
@@ -54,6 +57,8 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
 </section>
 
 

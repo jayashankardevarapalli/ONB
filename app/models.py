@@ -4,7 +4,7 @@ from django.db import models
 
 class Notes(models.Model):
 	title = models.CharField(max_length=250)
-	content = models.TextField()
+	content = models.TextField(null=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
