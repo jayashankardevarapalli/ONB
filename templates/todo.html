@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block todos %} Todo {% endblock %}
+
+{% block content %}
+
+<section class="section">
+	<div class="container">
+        <div class="row">
+            <div class="col-2">
+                <aside class="menu">
+                    <p class="menu-label"><h1 class="fw-bold display 2">Todo</h1></p>
+                    <p><a class="btn btn-primary" href="{% url 'todo' %}?todoid=0" style="font-size: 20px" role="button">Add Todo &raquo;</a>
+                    </p>
+                    <br>
+                    <ul class="menu-list">
+                        {% for t in todos %}
+                        <li>
+                            <a href="{% url 'todo' %}?todoid={{t.id}}" style="font-size: 23px;" >{{t.title}}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-10">
+                <form method="post" action="{% url 'todo' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="todoid" value="{{todoid}}">
+                    <div class="form-group">
+                        <label class="label"><h2 class="fw-bold display 2">Todo</h2>{% if tod %}<span class="has-text-grey-light">
+                            Last updated at:{{tod.updated_at | date:"d/m/Y"}} || created at: {{tod.created_at | date:"d/m/Y"}}{% endif %}
+                        </span></label>
+                        <div class="control">
+                            <input type="text" class="form-control" rows="2" style="width: 1200px; font-size: 20px;" name="title" placeholder="Write your todo here....."{% if tod %} value="{{ tod.title }}"{% endif %}>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="control">
+                            <button class="btn btn-primary" style="font-size: 20px">Save Todo</button>
+                            {% if tod %}
+                            <a href="{% url 'deltodo' tod.id %}" style="font-size: 20px" class="btn btn-danger">Delete Todo</a>
+                            {% endif %}
+                        </div>
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row">
+        {% for t in todos %}
+        <div class="col-md-4">
+            <p style="font-size: 30px;">{{ t.title | safe }}</p>
+            <p style="font-size: 15px;">Last updated at: {{t.updated_at | date:"d/m/Y"}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+	
+</section>
+
+{% endblock %}

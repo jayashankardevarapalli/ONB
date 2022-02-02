@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Notes
+from .models import Notes,Todo
 
 
 
@@ -48,14 +48,56 @@ def dashboard(request):
 
 	return render(request, 'dashboard.html', data)
 
+
+def todo(request):
+	todoid = int(request.GET.get('todoid', 0))
+	todos = Todo.objects.all()
+
+
+	if request.method == 'POST':
+		todoid = int(request.POST.get('todoid', 0))
+		title = request.POST.get('title')
+
+		if todoid > 0:
+			tod = Todo.objects.get(pk=todoid)
+			tod.todo = todo
+			tod.save()
+
+			return redirect('/todo/?todoid=%i' % todoid)
+
+		else:
+			tod = Todo.objects.create(title=title)
+
+			return redirect('/todo/?todoid=%i' % tod.id)
+
+	if todoid > 0:
+		tod = Todo.objects.get(pk=todoid)
+	else:
+		tod = ''
+
+	data = {
+			'todoid': todoid,
+			'todos': todos,
+			'tod': tod
+	}
+
+	return render(request, 'todo.html', data)
+
 def delnotes(request, noteid):
 	notes = Notes.objects.get(pk=noteid)
 	notes.delete()
 
 	return redirect('/dashboard/?noteid=0')
 
+def deltodo(request, todoid):
+	tod = Todo.objects.get(pk=todoid)
+	tod.delete()
+
+	return redirect('/todo/?todoid=0')
+
 def notes(request):
 	note = Notes.objects.all()[:11]
+	
 	return render(request, 'notes.html', {'note':note})
 
 
