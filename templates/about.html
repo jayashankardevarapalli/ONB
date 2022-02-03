@@ -10,13 +10,20 @@
       crossorigin="anonymous"
     />
 
-    <title>About</title>
-    {% load static %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/header.css' %}"
-    />
+    <title>About Me</title>
+    <style>
+      .about-wrapper{
+        display: block;
+        margin:auto;
+	      padding-top:50px;
+      }
+      .Social-media{
+        text-decoration: none;
+        margin: 0 10px;
+        font-size: 40px;
+        align-items: right;
+      }
+    </style>
   </head>
   <body>
     <header class="p-3 bg-dark text-white">
@@ -87,8 +94,33 @@
         </div>
       </div>
     </header>
-    <h1>About</h1>
-
+    <br><br><br><br><br><br><br>
+    <div class="container">
+      <div class="about-wrapper">
+        <h1>About Me</h1>
+        <br>
+        <p style="font-size: 20px;">I am D.Jaya Shankar Kumar, I am a Web Developer, Penetration Tester, Bug Bounty Hunter and i am in this feild since 2019. 
+          <br> I have pursued My CEH Certification in 2019.<br> Currently, I am Pursuing my MCA post-graduation degree from Gayatri Vidya Parishad 
+          College of Engineering (Autonomous), Vizag.<br>I am intrested in developing Web Applications, Automation tools/scripts for Penetration 
+          Testing and developing web exploits.
+        </p>
+        <br>
+        <h2>Contact Me</h2>
+        <br>
+        <p>Email Id: devarapallijayashankarkumar@gmail.com</p>
+        <br>
+        <a class="Social-media" href="https://twitter.com/MrJayashankar">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="Social-media" href="https://www.linkedin.com/in/devarapalli-jaya-shankar-kumar-530464230/">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+    </div>
+      </div>
+    </div>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
