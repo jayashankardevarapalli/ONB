@@ -1,9 +1,10 @@
 from django.urls import path, include
-from .views import index, dashboard, about, delnotes, notes, todo, deltodo, signin, signup
+from .views import index, dashboard, about, delnotes, notes, todo, deltodo, signin, signup, signout
 
 urlpatterns = [
     path('', index, name='index'),
     path('signin/', signin, name='signin'),
+    path('signout/', signout, name='signout'),
     path('signup/', signup, name='signup'),
     path('dashboard/', dashboard, name='dashboard'),
     path('todo/', todo, name='todo'),
