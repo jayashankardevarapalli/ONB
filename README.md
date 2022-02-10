@@ -15,7 +15,7 @@ Click to watch the project useage!!!
 To deploy this project on localhost run
 
 ```bash
-	pip3 install -r requirements.txt
+    pip3 install -r requirements.txt
     python3 manage.py runserver
 ```
 The default web server runs on port ```8000```.If you want to change the port number
